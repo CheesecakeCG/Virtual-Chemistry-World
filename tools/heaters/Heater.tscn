@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://tools/Tool.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Heater.gd" type="Script" id=2]
+
+[node name="Heater" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="PowerButton" type="CheckButton" parent="ControlRoot/ActionBox" index="0"]
+margin_right = 73.0
+margin_bottom = 48.0
+
+[node name="TempSpinner" type="SpinBox" parent="ControlRoot/ActionBox" index="1"]
+margin_top = 53.0
+margin_right = 73.0
+margin_bottom = 92.0
+suffix = "°C"
+
+[node name="DeleteButton" parent="ControlRoot/ActionBox" index="2"]
+margin_top = 97.0
+margin_right = 73.0
+margin_bottom = 136.0
+
+[node name="HeatArea" type="Area2D" parent="." index="2"]
+[connection signal="value_changed" from="ControlRoot/ActionBox/TempSpinner" to="." method="_on_Temp_value_changed"]

@@ -1,0 +1,59 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "KinematicBody2D",
+"class": "Entity",
+"language": "GDScript",
+"path": "res://Entity.gd"
+}, {
+"base": "Entity",
+"class": "Tool",
+"language": "GDScript",
+"path": "res://tools/Tool.gd"
+} ]
+_global_script_class_icons={
+"Entity": "",
+"Tool": ""
+}
+
+[application]
+
+config/name="VCW-GD"
+run/main_scene="res://Root.tscn"
+run/low_processor_mode=true
+config/icon="res://icon.png"
+
+[autoload]
+
+WorldProperties="*res://WorldProperties.gd"
+
+[display]
+
+window/energy_saving/keep_screen_on=false
+
+[editor_plugins]
+
+enabled=PoolStringArray( "carmel4a97.RTS_Camera2D", "water2d" )
+
+[gui]
+
+theme/custom="res://default_theme.tres"
+
+[rendering]
+
+quality/driver/driver_name="GLES2"
+quality/intended_usage/framebuffer_allocation=0
+quality/intended_usage/framebuffer_allocation.mobile=0
+quality/2d/use_pixel_snap=true
+vram_compression/import_etc=true
+vram_compression/import_etc2=false
+environment/default_clear_color=Color( 0.819608, 0.819608, 0.819608, 1 )
+environment/default_environment="res://default_env.tres"

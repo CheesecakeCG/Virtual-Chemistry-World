@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://tools/containers/Container.tscn" type="PackedScene" id=1]
+[ext_resource path="res://tools/containers/beaker/beaker.svg" type="Texture" id=2]
+[ext_resource path="res://addons/water2d/water_shader.tres" type="Material" id=3]
+[ext_resource path="res://addons/water2d/icon.png" type="Texture" id=4]
+[ext_resource path="res://addons/water2d/Water2D.gd" type="Script" id=5]
+[ext_resource path="res://addons/water2d/water_icon.png" type="Texture" id=6]
+
+[node name="Beaker" instance=ExtResource( 1 )]
+description = "A cylinder shaped container with a lip."
+icon = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="3"]
+scale = Vector2( 0.4, 0.4 )
+polygon = PoolVector2Array( -255.5, -352.8, -250.7, -348, -258.424, 308.091, 257.801, 308.091, 250.7, -348, 257.7, -355, 271.5, -355, 271.5, -353.5, 283.5, -350.6, 283.5, -349, 298.5, -337, 298.5, -334.5, 305.5, -322.5, 305.5, -317, 306.7, -302, 304.9, -302, 297.9, -283, 296.4, -283, 288.4, -274, 286, -274, 280.5, -270.9, 280.5, 311.4, 269.8, 335, 268.4, 335, 252.3, 350, 249.9, 350, 232.8, 356, -233.5, 356, -233.5, 354.7, -248.5, 351.6, -248.5, 350.1, -266.5, 338.1, -266.5, 335.7, -276.5, 322.7, -276.5, 319, -280.5, 305.3, -280.5, -270.7, -287.5, -273.7, -287.5, -275.2, -300.5, -288.2, -300.5, -290.6, -305.5, -301.6, -305.5, -321, -304, -321, -300, -334, -298.4, -334, -286.4, -348, -283.8, -348, -271.5, -353.3, -271.5, -355, -255.5, -355 )
+
+[node name="Sprite" type="Node2D" parent="CollisionPolygon2D" index="0"]
+
+[node name="Water2D" type="Sprite" parent="CollisionPolygon2D/Sprite" index="0"]
+material = ExtResource( 3 )
+position = Vector2( -2.77007, 41.1316 )
+scale = Vector2( 8.12673, 9.26519 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+__meta__ = {
+"_editor_icon": ExtResource( 6 )
+}
+
+[node name="Sprite" type="Sprite" parent="CollisionPolygon2D/Sprite" index="1"]
+texture = ExtResource( 2 )
+
+[node name="ActionBox" parent="ControlRoot" index="0"]
+margin_left = 135.18
+margin_top = -136.288
+margin_right = 176.18
+margin_bottom = -96.2881

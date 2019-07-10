@@ -41,11 +41,16 @@ window/energy_saving/keep_screen_on=false
 
 [editor_plugins]
 
-enabled=PoolStringArray( "carmel4a97.RTS_Camera2D", "water2d" )
+enabled=PoolStringArray( "carmel4a97.RTS_Camera2D" )
 
 [gui]
 
 theme/custom="res://default_theme.tres"
+
+[physics]
+
+2d/thread_model=2
+2d/time_before_sleep=0.07
 
 [rendering]
 

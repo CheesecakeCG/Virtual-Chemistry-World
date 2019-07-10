@@ -6,9 +6,8 @@
 [node name="Container" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
-
-[node name="RayCast2D" type="RayCast2D" parent="." index="2"]
+[node name="ControlRoot" parent="." index="0"]
+editor/display_folded = false
 
 [node name="PourButton" type="Button" parent="ControlRoot/ActionBox" index="0"]
 margin_right = 68.0
@@ -17,5 +16,8 @@ text = "Pour"
 
 [node name="DeleteButton" parent="ControlRoot/ActionBox" index="1"]
 margin_top = 44.0
-margin_right = 68.0
 margin_bottom = 83.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+
+[node name="RayCast2D" type="RayCast2D" parent="." index="2"]

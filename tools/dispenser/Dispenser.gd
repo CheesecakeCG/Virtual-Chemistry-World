@@ -16,7 +16,7 @@ func _on_Timer_timeout():
 	dispence()
 
 func dispence():
-	var s : KinematicBody2D = samples[sample_list.selected - 1].instance()
+	var s : KinematicBody2D = samples[sample_list.selected].instance()
 	s.global_position = global_position
 	WorldProperties.sim_path.add_child(s)
 

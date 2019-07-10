@@ -1,19 +1,24 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://tools/Tool.tscn" type="PackedScene" id=1]
 [ext_resource path="res://tools/dispenser/Dispenser.gd" type="Script" id=2]
 [ext_resource path="res://tools/dispenser/Dispenser.png" type="Texture" id=3]
-[ext_resource path="res://elements/abdon.tscn" type="PackedScene" id=4]
+[ext_resource path="res://samples/abdon.tscn" type="PackedScene" id=4]
+[ext_resource path="res://samples/Water.tscn" type="PackedScene" id=5]
 
 [node name="Dispenser" instance=ExtResource( 1 )]
+collision_layer = 2
 script = ExtResource( 2 )
 icon = ExtResource( 3 )
-samples = [ ExtResource( 4 ) ]
+samples = [ ExtResource( 4 ), ExtResource( 5 ) ]
+
+[node name="ControlRoot" parent="." index="0"]
+editor/display_folded = false
 
 [node name="ActionBox" parent="ControlRoot" index="0"]
-margin_left = 44.16
+margin_left = 40.0
 margin_top = -30.0
-margin_right = 167.16
+margin_right = 163.0
 margin_bottom = 106.0
 
 [node name="PowerButton" type="CheckButton" parent="ControlRoot/ActionBox" index="0"]

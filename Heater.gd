@@ -17,8 +17,8 @@ func _ready():
 func _process(delta):
 	if is_on:
 		for b in heat_area.get_overlapping_bodies():
-			if b.is_in_group("element"):
-				b.temperature = (b.temperature + temperature) / 2
+			if b.is_in_group("Sample"):
+				b.apply_temp(temperature, delta)
 
 func _on_Temp_value_changed(value):
 	temperature = value

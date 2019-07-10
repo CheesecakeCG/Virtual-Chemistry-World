@@ -9,32 +9,22 @@ radius = 138.755
 height = 209.058
 
 [node name="Heater" instance=ExtResource( 1 )]
+collision_layer = 1
 script = ExtResource( 2 )
 icon = ExtResource( 3 )
 max_temperature = 1550.0
 
-[node name="HoverArea" parent="." index="0"]
+[node name="ActionBox" parent="ControlRoot" index="0"]
+margin_left = 101.297
+margin_top = -109.089
+margin_right = 174.297
+margin_bottom = 26.9107
+
+[node name="HoverArea" parent="." index="1"]
 position = Vector2( -6.13873, 112.952 )
 
 [node name="CollisionShape2D" parent="HoverArea" index="0"]
 position = Vector2( 0.598755, 0.59874 )
-
-[node name="ActionBox" parent="ControlRoot" index="0"]
-margin_left = 89.6251
-margin_top = -99.4469
-margin_right = 162.625
-margin_bottom = 36.5531
-
-[node name="PowerButton" parent="ControlRoot/ActionBox" index="0"]
-margin_right = 123.0
-text = "Power"
-align = 2
-
-[node name="TempSpinner" parent="ControlRoot/ActionBox" index="1"]
-margin_right = 123.0
-
-[node name="DeleteButton" parent="ControlRoot/ActionBox" index="2"]
-margin_right = 123.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="2"]
 position = Vector2( 84.7856, -0.698334 )
@@ -49,4 +39,3 @@ shape = SubResource( 1 )
 [node name="Sprite" type="Sprite" parent="Sprite" index="0"]
 texture = ExtResource( 3 )
 hframes = 2
-[connection signal="toggled" from="ControlRoot/ActionBox/PowerButton" to="." method="_on_PowerButton_toggled"]

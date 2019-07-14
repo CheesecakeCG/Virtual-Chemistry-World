@@ -40,16 +40,18 @@ func _process(delta : float):
 		STATES.solid:
 			pass
 		STATES.liquid:
+			# Only collisions are slow, only liquids need collsions
 			_fluid_process(delta, true)
 		STATES.gas:
-			_fluid_process(delta, false)
+			_fluid_process(delta, true)
 
 	# Apply boyancy
 	# W = pgV
+
 	velocity += WorldProperties.ambient_air_density * WorldProperties.gravity * volume * delta
 
 	# Apply gravity
-	velocity += WorldProperties.gravity * delta
+	velocity -= WorldProperties.gravity * delta
 
 	# Apply volume visually
 	$Sprite.scale = Vector2(1, 1) * clamp(inverse_lerp(.1, 20, volume), .2, 1)
@@ -57,9 +59,8 @@ func _process(delta : float):
 
 func _fluid_process(delta : float, should_collide : bool):
 	# Brownian Motion
-#	velocity = (delta * (temperature + 270) * Vector2(2 * randf() - 1, 2 * randf() - 1))
+	velocity += (delta * (temperature + 270) * .05 * Vector2(2 * randf() - 1, 2 * randf() - 1))
 
-	# Only gases are allowed to collide since they do it less often, collisions are slow
 	if (should_collide):
 		move_and_slide(velocity)
 	else:

@@ -2,11 +2,11 @@
 
 [ext_resource path="res://samples/Sample.tscn" type="PackedScene" id=1]
 
-[node name="Abdon" index="0" groups=[
+[node name="Abdon" groups=[
 "Sample",
 ] instance=ExtResource( 1 )]
 description = "Non-reactive Gas"
 boiling_point = -50.0
 freezing_point = -200.0
 mass = 0.8
-conductivity = 1.0
+conductivity = 0.1

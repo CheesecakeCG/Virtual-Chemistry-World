@@ -30,6 +30,9 @@ func add_to_place_queue_from_ui(ui_list : ItemList, list : Array):
 func _on_AddToolButton_pressed():
 	add_to_place_queue_from_ui(tool_list, tools)
 
+func _on_ToolsList_item_activated(index):
+	add_to_place_queue_from_ui(tool_list, tools)
+
 func _on_AddSampleButton_pressed():
 	add_to_place_queue_from_ui(sample_list, samples)
 
@@ -56,3 +59,4 @@ func clear_world():
 		c.queue_free()
 	$"RTS-Camera2D".position = Vector2() # Recenter camera
 	$"RTS-Camera2D".zoom = Vector2(1, 1) # Reset zoom
+

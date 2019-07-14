@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Root.gd" type="Script" id=1]
 [ext_resource path="res://tools/containers/beaker/Beaker.tscn" type="PackedScene" id=2]
@@ -6,8 +6,9 @@
 [ext_resource path="res://tools/dispenser/Dispenser.tscn" type="PackedScene" id=4]
 [ext_resource path="res://samples/abdon.tscn" type="PackedScene" id=5]
 [ext_resource path="res://default_theme.tres" type="Theme" id=6]
-[ext_resource path="res://addons/carmel4a97.RTS_Camera2D/RTS-Camera2D.gd" type="Script" id=7]
-[ext_resource path="res://addons/carmel4a97.RTS_Camera2D/node_icon.png" type="Texture" id=8]
+[ext_resource path="res://Sim.gd" type="Script" id=7]
+[ext_resource path="res://addons/carmel4a97.RTS_Camera2D/RTS-Camera2D.gd" type="Script" id=8]
+[ext_resource path="res://addons/carmel4a97.RTS_Camera2D/node_icon.png" type="Texture" id=9]
 
 [node name="Root" type="Node2D"]
 script = ExtResource( 1 )
@@ -15,7 +16,6 @@ tools = [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ]
 samples = [ ExtResource( 5 ) ]
 
 [node name="Control" type="CanvasLayer" parent="."]
-editor/display_folded = true
 layer = 51
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control"]
@@ -36,7 +36,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/HBoxContainer/PanelContainer"]
-editor/display_folded = true
 margin_left = 10.5
 margin_top = 8.0
 margin_right = 230.5
@@ -112,6 +111,7 @@ flat = true
 align = 0
 
 [node name="Sim" type="Node2D" parent="."]
+script = ExtResource( 7 )
 
 [node name="RTS-Camera2D" type="Camera2D" parent="."]
 position = Vector2( 510, 305 )
@@ -120,13 +120,19 @@ drag_margin_left = 0.1
 drag_margin_top = 0.1
 drag_margin_right = 0.1
 drag_margin_bottom = 0.1
-script = ExtResource( 7 )
+script = ExtResource( 8 )
 __meta__ = {
-"_editor_icon": ExtResource( 8 )
+"_editor_icon": ExtResource( 9 )
 }
-zoom_out_limit = 8
+zoom_out_limit = 16
 camera_speed = 900
+
+[node name="ReactionTimer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+[connection signal="item_activated" from="Control/HBoxContainer/PanelContainer/VBoxContainer/ToolsList" to="." method="_on_ToolsList_item_activated"]
 [connection signal="pressed" from="Control/HBoxContainer/PanelContainer/VBoxContainer/AddToolButton" to="." method="_on_AddToolButton_pressed"]
 [connection signal="pressed" from="Control/HBoxContainer/PanelContainer/VBoxContainer/AddSampleButton" to="." method="_on_AddSampleButton_pressed"]
 [connection signal="pressed" from="Control/HBoxContainer/VBoxContainer/HideButton" to="." method="_on_HideButton_pressed"]
 [connection signal="pressed" from="Control/HBoxContainer/VBoxContainer/ClearButton" to="." method="_on_ClearButton_pressed"]
+[connection signal="timeout" from="ReactionTimer" to="Sim" method="_on_ReactionTimer_timeout"]

@@ -10,7 +10,7 @@ radius = 8.49778
 [sub_resource type="CanvasItemMaterial" id=2]
 blend_mode = 1
 
-[node name="Sample" groups=[
+[node name="Sample" index="0" groups=[
 "element",
 ] instance=ExtResource( 1 )]
 script = ExtResource( 2 )
